@@ -96,7 +96,7 @@ if (file.exists(file.path(path.to.01.output, "s.obj.before.integration.rds")) ==
 
 # Preprocessing and QC for GEX data
 ## Raw data Quality control  {.tabset}
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 for (plot.name in names(s.obj@misc$all.QC)){
  
     cat('###',plot.name,'{.unlisted .unnumbered} \n')
@@ -114,7 +114,7 @@ for (plot.name in names(s.obj@misc$all.QC)){
 ## Ambient RNA background correction 
 
 ### DecontX clusters {.tabset}
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 for (plot.name in names(s.obj@misc$ambient.cluster.RNA.plot)){
  
     cat('####',plot.name,'{.unlisted .unnumbered} \n')
@@ -129,7 +129,7 @@ for (plot.name in names(s.obj@misc$ambient.cluster.RNA.plot)){
 
 ### Contamination level in each sample
 
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 ggplot(s.obj@meta.data, aes(x=name, y=AmbientRNA)) + 
   geom_boxplot()
 
@@ -138,7 +138,7 @@ ggplot(s.obj@meta.data, aes(x=name, y=AmbientRNA)) +
 
 ### Ambient RNA contamination level {.tabset}
 
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 for (plot.name in names(s.obj@misc$ambient.contamination.plot)){
  
     cat('####',plot.name,'{.unlisted .unnumbered} \n')
@@ -155,7 +155,7 @@ for (plot.name in names(s.obj@misc$ambient.contamination.plot)){
 ## Descriptive statistics and filtering threshold {.tabset}
 This section is devoted to the descriptive statistics of the following varialbes: `nFeature_RNA, nCount_RNA, percent.mt, percent.ribo`. 
 
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 for (plot.item in c("nFeature_RNA", "nCount_RNA", "percent.mt", "percent.ribo")){
   boxplot <- s.obj@meta.data %>% ggplot(aes_string(x = "name", y = plot.item)) +
     geom_boxplot(outlier.colour="black", outlier.shape=16,
@@ -178,39 +178,39 @@ for (plot.item in c("nFeature_RNA", "nCount_RNA", "percent.mt", "percent.ribo"))
 ## Descriptive statistics + UMAP {.tabset}
 
 ### % Mitochondrial
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 FeaturePlot(object = s.obj, reduction = "INTE_UMAP", feature = "percent.mt", label = TRUE, label.size = 8, pt.size = 0.5, label.color = "red", )
 ```
 
 ### % Ribosome
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 FeaturePlot(object = s.obj, reduction = "INTE_UMAP", feature = "percent.ribo", label = TRUE, label.size = 8, pt.size = 0.5, label.color = "red", )
 ```
 
 ### % nCount RNA
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 FeaturePlot(object = s.obj, reduction = "INTE_UMAP", feature = "nCount_RNA", label = TRUE, label.size = 8, pt.size = 0.5, label.color = "red", )
 ```
 
 ### % nGenes 
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 FeaturePlot(object = s.obj, reduction = "INTE_UMAP", feature = "nFeature_RNA", label = TRUE, label.size = 8, pt.size = 0.5, label.color = "red", )
 ```
 
 ## Cell cycle scoring {.tabset}
 
 ### Cell cycle, split by Phase
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 DimPlot(s.obj, reduction = "INTE_UMAP", split.by = "Phase")
 ```
 
 ### Cell cycle, group by Phase
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 DimPlot(s.obj, reduction = "INTE_UMAP", group.by = "Phase", label = TRUE, label.size = 8, pt.size = 0.5, label.box = TRUE, repel = TRUE)
 ```
 
 ### PCA, cell cycle, group by Phase
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 all.genes <- rownames(x = s.obj)
 s.genes <- paste0("^", cc.genes$s.genes, "$", collapse = "|")
 s.genes <- all.genes[grepl(s.genes, all.genes, ignore.case = TRUE)]
@@ -224,7 +224,7 @@ DimPlot(s.obj, reduction = "CELLCYCLED_PCA", group.by = "Phase", pt.size = 1)
 # Dimension reduction with UMAP
 
 ## UMAP: all clusters 
-```{r UMAP_all_clusters_after_integrating, echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r UMAP_all_clusters_after_integrating, echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 # DimPlot(object = s.obj, reduction = "INTE_UMAP", label = TRUE, label.box = TRUE, label.size = 10, pt.size = 1, repel = TRUE) + 
 #   ggtitle(sprintf("UMAP: All clusters")) +
 #   theme(axis.text = element_text(size=20, face = "bold"),
@@ -234,7 +234,7 @@ DimPlot(object = s.obj, reduction = "INTE_UMAP", label = TRUE, label.box = TRUE,
 ```
 
 ## UMAP: all samples before integrating
-```{r UMAP_all_samples_before_integrating, echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r UMAP_all_samples_before_integrating, echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 # DimPlot(object = s.obj.before.integration, reduction = "RNA_UMAP", label = TRUE, label.box = TRUE, label.size = 10, pt.size = 1, repel = TRUE, group.by = "name") + 
 #   ggtitle(sprintf("UMAP Sample: All samples before integrating")) +
 #   theme(axis.text = element_text(size=20, face = "bold"),
@@ -245,7 +245,7 @@ DimPlot(object = s.obj.before.integration, reduction = "RNA_UMAP", label = TRUE,
 ```
 
 ## UMAP: all samples after integrating
-```{r UMAP_all_samples_after_integrating, echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r UMAP_all_samples_after_integrating, echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 # DimPlot(object = s.obj, reduction = "INTE_UMAP", label = TRUE, label.box = TRUE, label.size = 10, pt.size = 1, repel = TRUE, group.by = "name") + 
 #   ggtitle(sprintf("UMAP Sample: All samples after integrating")) +
 #   theme(axis.text = element_text(size=20, face = "bold"),
@@ -258,7 +258,7 @@ DimPlot(object = s.obj, reduction = "INTE_UMAP", label = TRUE, label.box = TRUE,
 ## Distribution of cells having "GRCh38_CD2" gene (or added sequences)
 
 ### Where are GRCh38_CD2 (or added sequences) cells?
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 
 if (PROJECT %in% c("230215_Kopplin_Pabst_NC_000001", "230215_Kopplin_Pabst_NC_000001_removed_contaminated_cells",
                          "230215_Kopplin_Pabst_added_NC_000001_merged", "230215_Kopplin_Pabst_added_NC_000001_merged_zcat",
@@ -282,14 +282,14 @@ DimPlot(object = s.obj, reduction = "INTE_UMAP", cells.highlight = cd2.cells, co
 ```
 
 ## Expressions of GRCh38_CD2 in each cell
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 DefaultAssay(s.obj) <- "RNA"
 FeaturePlot(object = s.obj, features = c(added.gene), label = TRUE, pt.size = 1)
 ```
 
 
 # Cluster marker genes
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 if (file.exists(file.path(path.to.01.output, "all_cluster_markers.rds")) == FALSE){
   cluster.markers <- FindAllMarkers(object = s.obj, assay = "RNA", test.use = "wilcox")
   cluster.markers <- subset(cluster.markers, cluster.markers$p_val_adj <= 0.05 & cluster.markers$avg_log2FC > 0)
@@ -306,7 +306,7 @@ if (file.exists(file.path(path.to.01.output, "all_cluster_markers.rds")) == FALS
 cluster.markers %>% create_dt()
 ```
 
-```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r echo=FALSE, warning=FALSE, message=FALSE, results='asis', fig.width=14, fig.height=10, dev='svg'}
 for(cluster.id in sort(unique(cluster.markers$cluster))){
   cat(paste("\n\n### Cluster: ", cluster.id, "##\n"))
   tmp <- subset(cluster.markers, cluster.markers$cluster == cluster.id) %>% arrange(desc(avg_log2FC)) %>%
@@ -333,7 +333,7 @@ for(cluster.id in sort(unique(cluster.markers$cluster))){
 
 ## Top-16 cluster markers feature plot {.tabset}
 
-```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dev='svg'}
 for (cluster.id in unique(cluster.markers$cluster)){
   DefaultAssay(s.obj) <- "RNA"
   tmp <- subset(cluster.markers, cluster.markers$cluster == cluster.id & cluster.markers$p_val_adj < 0.05) %>% 
@@ -349,7 +349,7 @@ for (cluster.id in unique(cluster.markers$cluster)){
 
 ## Top-16 cluster markers dot plot {.tabset}
 
-```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dev='svg'}
 for (cluster.id in unique(cluster.markers$cluster)){
   DefaultAssay(s.obj) <- "RNA"
   tmp <- subset(cluster.markers, cluster.markers$cluster == cluster.id & cluster.markers$p_val_adj < 0.05) %>% 
@@ -365,7 +365,7 @@ for (cluster.id in unique(cluster.markers$cluster)){
 
 ## Top-16 cluster markers Violin plot {.tabset}
 
-```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dev='svg'}
 for (cluster.id in unique(cluster.markers$cluster)){
   DefaultAssay(s.obj) <- "RNA"
   tmp <- subset(cluster.markers, cluster.markers$cluster == cluster.id & cluster.markers$p_val_adj < 0.05) %>% 
@@ -380,7 +380,7 @@ for (cluster.id in unique(cluster.markers$cluster)){
 ```
 
 
-```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dev='svg'}
 saveRDS(object = s.obj, file = file.path(path.to.01.output, "230215_Kopplin.seurat.obj.rds"))
 
 # ##### REMOVE CLUSTER 9
@@ -390,7 +390,6 @@ saveRDS(object = remove.barcodes.cluster9, file = file.path(path.to.01.output, "
 saveRDS(object = subset(s.obj, seurat_clusters != 9), file = file.path(path.to.01.output, "230215_Kopplin_seurat_obj.remove_clsuter9.rds"))
 ```
 
-
-```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dpi=300, dev='svg'}
+```{r results='asis', echo=FALSE, message=FALSE, warning=FALSE, fig.width=14, fig.height=10, dev='svg'}
 ```
 
